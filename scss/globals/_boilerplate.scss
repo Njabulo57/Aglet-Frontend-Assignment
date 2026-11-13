@@ -1,0 +1,163 @@
+@forward "fonts";
+
+$primary-color: #000;
+$secondary-color: #fff;
+$primary-font: "Antoni", Helvetica;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: $primary-font;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+
+  img {
+    width: 40%;
+  }
+
+  .logo{
+    width:fit-content;
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    list-style-type: none;
+
+    li {
+      a {
+        color: var(--fg);
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .nav-links-web {
+    display: none;
+  }
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+
+  span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin-bottom: 6px;
+    background-color: var(--fg);
+    transform-origin: center;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+  }
+
+  &.open {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease;
+
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
+
+.burger-menu-container{
+  position: relative;
+}
+
+
+
+  @keyframes moveItems {
+  0%   { transform: translateY(20px);  opacity: 0; }
+  60%  { transform: translateY(-1px);  opacity: 1; }
+  100% { transform: translateY(0);     opacity: 1; }
+}
+
+.nav-links-mobile {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  li {
+    opacity: 0;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &.show {
+    visibility: visible;
+    pointer-events: auto;
+
+    li {
+      animation: moveItems 0.35s linear both;
+
+      @for $i from 1 through 2 {
+        &:nth-child(#{$i}) {
+          animation-delay: ($i - 1) * 0.125s;
+        }
+      }
+    }
+  }
+}
+
+  @media (min-width: 986px) {
+    padding: 2.5rem 3rem;
+
+    position: relative;
+
+    .nav-links-web {
+      display: flex;
+    }
+
+    .nav-links-mobile, .burger-menu-container {
+      display: none;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  --bg: #{$primary-color};
+  --fg: #{$secondary-color};
+  background-color: var(--bg);
+  color: var(--fg);
+
+  &.light {
+    --bg: #{$secondary-color};
+    --fg: #{$primary-color};
+  }
+}

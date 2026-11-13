@@ -1,32 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Aglet Assignment</title>
-</head>
-<body>
+    <script src="js/utilities.js" defer></script>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div>
-
-            </div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Contact</a></li>
+      <nav>
+        <a class="logo" href="/index.html">
+          <img src="assets/aglet_logo.svg" alt="Aglet Logo" />
+        </a>
+        <div class="burger-menu-container">
+          <button class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-links-mobile">
+            <li><a href="#">home</a></li>
+            <li><a href="/contact.html">contact</a></li>
+          </ul>
+        </div>
+        <ul class="nav-links-web">
+          <li><a href="#">home</a></li>
+          <li><a href="/contact.html">contact</a></li>
         </ul>
-    </nav>
+      </nav>
     </header>
     <main>
-        <section>
-            <div>
-
+      <section>
+        <div class="slider">
+            <div class="slider-container">
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download.jpg">
+                    <source src="assets/videos/1_Grow_up_Stage_Modul_video.mp4" type="video/mp4" />
+                    <!-- thumbnail download -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
             </div>
-        </section>
-
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-9.jpg">
+                    <source src="assets/videos/bmw_stage_3.mp4" type="video/mp4" />
+                    <!-- thumbnail download-9 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-9.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-3.jpg">
+                    <source src="assets/videos/EasyRider_8Sec_L.mp4" type="video/mp4" />
+                    <!-- thumbnail download-3 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-3.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-10.jpg">
+                    <source src="assets/videos/eq_stage_video.mp4" type="video/mp4" />
+                    <!-- thumbnail download-10 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-10.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-8.jpg">
+                    <source src="assets/videos/F1_stage-1.mp4" type="video/mp4" />
+                    <!-- thumbnail download-8 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-8.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-1.jpg">
+                    <source src="assets/videos/IAA_Makingof_8Sec_L.mp4" type="video/mp4" />
+                    <!-- thumbnail download-1 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-1.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-4.jpg">
+                    <source src="assets/videos/katjes_stage-1.mp4" type="video/mp4" />
+                    <!-- thumbnail download-4 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-4.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-6.jpg">
+                    <source src="assets/videos/Mercedes_Leon_stage.mp4" type="video/mp4" />
+                    <!-- thumbnail download-6 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-6.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-5.jpg">
+                    <source src="assets/videos/risk_1.mp4" type="video/mp4" />
+                    <!-- thumbnail download-5 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-5.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-11.jpg">
+                    <source src="assets/videos/stage_g_class_dna.mp4" type="video/mp4" />
+                    <!-- thumbnail download-11 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-11.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-7.jpg">
+                    <source src="assets/videos/stage_xmas.mp4" type="video/mp4" />
+                    <!-- thumbnail download-7 -->
+                </video>
+                <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-7.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            <div class="slider-item">
+                <video muted loop poster="assets/Thumbnails/download-2.jpg">
+                    <source src="assets/videos/TimeToLookUpAgain_8Sec_L.mp4" type="video/mp4" />
+                    <!-- thumbnail download-2 -->
+                </video>
+       <div class="slider-mobile-image">
+                    <img src="assets/Thumbnails/download-2.jpg" alt="thumbnail-1">
+                </div>
+                <div class="slider-copy">
+                    <p class="slider-headline">Grow up Stage</p>
+                    <p class="slider-subtext">Mercedes Benz</p>
+                </div>
+            </div>
+            </div>
+            <button class="slider-prev">&#10094;</button>
+            <button class="slider-next">&#10095;</button>
+            <div class="slider-progress-container"><div class="slider-progress-bar"><span></span></div></div>
+        </div>
+      </section>
     </main>
-    <footer>
-
-    </footer>
-</body>
+    <footer></footer>
+    <script src="js/slider.js"></script>
+  </body>
 </html>

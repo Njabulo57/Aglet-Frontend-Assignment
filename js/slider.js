@@ -1,67 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
+  //all elements to be manipulated and flags
 
   const slider = document.querySelector(".slider-container");
   const slides = document.querySelectorAll(".slider-item");
-  let currentIndex = 0;
+  // let currentIndex = 0;
   const nextBtn = document.querySelector(".slider-next");
   const prevBtn = document.querySelector(".slider-prev");
   let screenWidth = window.innerWidth;
 
   const bar = document.querySelector(".slider-progress-bar");
   const thumb = bar.querySelector("span");
-  let wheelLocked = false;
 
   let hoveredVideo = null;
 
+  let offset = 0;
+  let maxOffset = (slides.length / 3 - 1) * screenWidth;
 
-function updateProgressBar() {
-  const progress = (currentIndex) / 3;
-  thumb.style.width = `${progress * 100}%`;
-}
+  // progress bar visual fill
+  function updateProgressBar() {
+    thumb.style.width = `${(offset / maxOffset) * 100}%`;
+  }
 
-
+  // resize event to ensure slider stays visually consistent in position and no mobile slider
   window.addEventListener("resize", () => {
+    const progress = offset / maxOffset;
     screenWidth = window.innerWidth;
+    maxOffset = (slides.length / 3 - 1) * screenWidth;
 
     if (screenWidth < 1024) {
-      currentIndex = 0;
+      // currentIndex = 0;
+      offset = 0;
       slider.style.transform = "";
     } else {
-      slider.style.transform = `translateX(-${currentIndex * screenWidth}px)`;
+      offset = progress * maxOffset;
+      slider.style.transform = `translateX(-${offset}px)`;
     }
 
     updateProgressBar();
   });
 
+  // previous button logic
   function previousSlide() {
-    console.log("index " + currentIndex);
-    if (currentIndex >= 1) {
-      console.log("prev index: " + currentIndex);
-      currentIndex--;
-      slider.style.transform = `translateX(-${currentIndex * screenWidth}px)`;
-      console.log("how prev moved by: " + currentIndex * screenWidth);
-    }
+    offset = Math.max(offset - screenWidth, 0);
+    slider.style.transition = "";
+    thumb.style.transition = "";
+    slider.style.transform = `translateX(-${offset}px)`;
     updateProgressBar();
   }
+
+  // next button logic
 
   function nextSlide() {
-    const hardStop = slides.length / 3;
-    console.log("hard stop: " + hardStop);
-    if (screenWidth) {
-      if (currentIndex > 0 && currentIndex < 3) {
-        currentIndex++;
-        slider.style.transform = `translateX(-${currentIndex * screenWidth}px)`;
-        console.log(currentIndex * screenWidth);
-        console.log("click number: " + currentIndex);
-      } else if (currentIndex === 0) {
-        slider.style.transform = `translateX(-${screenWidth}px)`;
-        currentIndex++;
-        console.log("first click: " + currentIndex);
-      }
-    }
+    offset = Math.min(offset + screenWidth, maxOffset);
+    slider.style.transition = "";
+    thumb.style.transition = "";
+    slider.style.transform = `translateX(-${offset}px)`;
     updateProgressBar();
   }
 
+  // naviagtion buttons event listners
   nextBtn.addEventListener("click", () => {
     nextSlide();
   });
@@ -70,35 +67,32 @@ function updateProgressBar() {
     previousSlide();
   });
 
+  // mouse scroll event listener
+  slider.addEventListener("wheel", (event) => {
 
-  slider.addEventListener(
-    "wheel",
-    (event) => {
       if (window.innerWidth < 1024) return;
 
-      const goingNext = event.deltaY > 0 || event.deltaX > 0;
+      const delta =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
 
-      if (goingNext && currentIndex === 3) return;
-      if (!goingNext && currentIndex === 0) return;
+      const target = Math.min(Math.max(offset + delta, 0), maxOffset);
+
+      if (target === offset) return;
 
       event.preventDefault();
+      offset = target;
 
-      if (wheelLocked) return;
-      wheelLocked = true;
-
-      if (goingNext) {
-        nextSlide();
-      } else {
-        previousSlide();
-      }
-
-      setTimeout(() => {
-        wheelLocked = false;
-      }, 800);
+      slider.style.transition = "none";
+      thumb.style.transition = "none";
+      slider.style.transform = `translateX(-${offset}px)`;
+      updateProgressBar();
     },
-    { passive: false }
+    { passive: false },
   );
 
+  // video playback on hover event handler
   slider.addEventListener("mouseover", (event) => {
     const hovered = event.target.closest(".slider-item video");
 

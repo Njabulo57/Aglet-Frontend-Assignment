@@ -30,7 +30,7 @@ nav {
   width: 100%;
 }
 nav img {
-  width: 40%;
+  max-width: 80px;
 }
 nav .logo {
   width: fit-content;
@@ -171,12 +171,18 @@ body .loading-screen {
 }
 body .loading-screen p {
   overflow: hidden;
-  font-size: 4rem;
+  font-size: 1.5rem;
   white-space: nowrap;
   font-weight: 700;
   letter-spacing: -0.07em;
-  overflow: hidden;
   line-height: 7rem;
+  color: #fff;
+  visibility: hidden;
+}
+@media (min-width: 1024px) {
+  body .loading-screen p {
+    font-size: 4rem;
+  }
 }
 
 main {
